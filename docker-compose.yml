@@ -28,21 +28,6 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
-  migration:
-    build:
-      context: .
-    command:
-      [
-        "./wait-for-it.sh",
-        "mysqldb:3306",
-        "--",
-        "npm",
-        "run-script",
-        "migrate",
-        "&&",
-        "npm",
-        "run-script",
-        "seed"
-      ]
+
 volumes: 
   db:
